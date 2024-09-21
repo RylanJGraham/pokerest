@@ -1,4 +1,4 @@
-// app/[pokemonName]/page.tsx
+//Pokemon Information Page
 import PokemonClientComponent from "@/components/PokemonClientComponent";
 import { getPokemonDetails } from "@/lib/pokemonAPI";
 

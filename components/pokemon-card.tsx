@@ -7,7 +7,6 @@ interface PokemonCardProps {
 
 export function PokemonCard({ name, image }: PokemonCardProps) {
   return (
-    // Send to Pokemon's Page
     <Link href={`/${name}`}>
       <div className="relative border rounded-lg shadow-lg w-48 h-64 flex flex-col overflow-hidden transition-transform transform hover:scale-105 hover:border-white hover:border-4 hover:border-solid">
         {/* Background image */}

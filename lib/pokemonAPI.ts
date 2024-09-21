@@ -1,6 +1,6 @@
-// Assuming this function is in `pokemonAPI.ts`
 const POKEMON_API = "https://pokeapi.co/api/v2/";
 
+// API Call for HOMEPAGE
 // Fetch basic Pokémon list with names
 export async function getPokemonList(offset = 0, limit = 20) {
   const response = await fetch(`${POKEMON_API}pokemon?limit=${limit}&offset=${offset}`);
@@ -21,6 +21,7 @@ export async function getPokemonList(offset = 0, limit = 20) {
   return detailedPokemonList;
 }
 
+// API Call for Specific Pokemon Page
 // Fetch individual Pokémon details including image
 export async function getPokemonDetails(name: string) {
   const response = await fetch(`${POKEMON_API}pokemon/${name}`);

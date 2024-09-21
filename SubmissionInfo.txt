@@ -1,0 +1,34 @@
+Technical Test - Internship Web Software Engineer
+
+Name:Rylan Graham
+
+Setup Commands
+------------------------
+1. Unzip Project 
+2. Make sure Node.js is installed on system
+3. Open project with chosen code editor and enter terminal or open command prompt and navigate to project cd 
+4. Install project dependencies with 'npm install' or 'yarn install'
+5. To run project locally use 'npm run dev' or 'yarn dev'
+6. Enjoy!
+
+Versions
+------------------------
+Nodejs Version: v22.7.0
+Next Version: next@14.2.7
+
+Time Spent on Test
+------------------------
+Total Time: 9 hours
+- Key Functionality Nav/API/Display: 6 hours
+- UI Styling & Search Filtering: 3 hours 
+
+Component Libraries Used
+------------------------
+shadcn/ui: https://ui.shadcn.com/
+
+
+Additional Notes: 
+------------------------
+I used TypeScript for this application, however due to my proficiency I was using 'type: any' functionality for API calls, as I need more practice on advanced data techniques.  
+
+

@@ -11,20 +11,26 @@ type PokemonClientComponentProps = {
 };
 
 export default function PokemonClientComponent({ pokemonObject, pokemonName }: PokemonClientComponentProps) {
+    
+    //Shiny Toggle
     const [showShiny, setShowShiny] = useState(false);
+
+    //Pokemon Moves Nav Pages
     const [currentPage, setCurrentPage] = useState(0);
+
+    //Pokemon Moves Type & Level Details
     const [moveDetails, setMoveDetails] = useState<any[]>([]);
 
+    //Fetch move details when the component mounts
     useEffect(() => {
-        // Fetch move details when the component mounts
         const fetchMoveDetails = async () => {
             const moveDetailsPromises = pokemonObject.moves.map(async (move: any) => {
                 const response = await fetch(`https://pokeapi.co/api/v2/move/${move.move.name}`);
                 const moveData = await response.json();
                 return {
-                    name: move.move.name,
-                    type: moveData.type.name,
-                    level: move.version_group_details[0]?.level_learned_at || "N/A", // Retrieve level or default to "N/A"
+                    name: move.move.name, // Move Name
+                    type: moveData.type.name, // Move Type
+                    level: move.version_group_details[0]?.level_learned_at || "N/A", // Move Level Learned at
                 };
             });
             const results = await Promise.all(moveDetailsPromises);
@@ -38,15 +44,15 @@ export default function PokemonClientComponent({ pokemonObject, pokemonName }: P
     const defaultImage = pokemonObject.sprites.other["official-artwork"].front_default;
     const shinyImage = pokemonObject.sprites.other["official-artwork"].front_shiny;
 
-    // Extract the types from the Pokémon object
+    // Extract the type from the Pokémon object
     const pokemonTypes = pokemonObject.types.map((typeObj: any) => typeObj.type.name);
 
     const getTypeImage = (type: string) => {
         return `https://veekun.com/dex/media/types/en/${type}.png`;
     };
 
-    // Determine number of moves per page and the total number of pages
-    const movesPerPage = 4; // 2 rows x 3 columns
+    // Determine number of moves per page and the total number of pages based on Pokemon total number of moves
+    const movesPerPage = 4; // 2 rows x 2 columns
     const totalMoves = moveDetails.length;
     const totalPages = Math.ceil(totalMoves / movesPerPage);
 
@@ -150,7 +156,7 @@ export default function PokemonClientComponent({ pokemonObject, pokemonName }: P
                     {/* Moves Grid */}
                     <div className="grid grid-cols-2 gap-4">
                         {currentMoves.map((move: any, index: number) => (
-                            <PokemonMove key={index} moveName={move.name} type={move.type} level={move.level === "N/A" ? "HM&TM" : move.level} />
+                            <PokemonMove key={index} moveName={move.name} type={move.type} level={move.level === "N/A" ? "HM&TM" : move.level} /> // If Moves unknown must be TM or HM Learning
                         ))}
                     </div>
                 </div>
